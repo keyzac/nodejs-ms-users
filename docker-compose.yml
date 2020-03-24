@@ -1,0 +1,19 @@
+version: '2'
+services:
+  backend:
+    image: $IMAGE_DEV
+    container_name: $CONTAINER_NAME
+    environment:
+      MODE: 'volume'
+      PREFIX: $PREFIX_PATH
+    volumes:
+      - ./app/:/home/node/app/:rw
+      - ~/.ssh:/root/.ssh
+      - ~/.aws:/root/.aws
+    ports:
+    - 3636:3636
+
+networks:
+  default:
+    external:
+      name: $DOCKER_NETWORK
