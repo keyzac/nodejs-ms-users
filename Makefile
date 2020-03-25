@@ -10,6 +10,7 @@ VERSION      = v1
 TAG_DEV      = dev
 USER_ID     ?= $(shell id -u)
 GROUP_ID    ?= $(shell id -g)
+TAG_MYSQL    = mysql
 
 ## DEPLOY ##
 ENV              ?= dev
@@ -20,6 +21,7 @@ DOCKER_NETWORK 		?= backend-network
 CONTAINER_NAME       = $(PROJECT_NAME)_backend
 IMAGE_DEV            = $(PROJECT_NAME):$(TAG_DEV)
 PREFIX_PATH          = /$(VERSION)/$(SERVICE_NAME)
+IMAGE_MYSQL		     = ${PROJECT_NAME}:${TAG_MYSQL}
 
 build: ## build image to dev and cli: make build
 	docker build -f docker/dev/Dockerfile --build-arg UID=$(USER_ID) --build-arg GID=$(GROUP_ID) -t $(IMAGE_DEV) docker/dev/
@@ -49,3 +51,9 @@ verify_network: ## Verify the local network was created in docker, normaly creat
 
 attach: ## attach log to console: make attach
 	docker attach --sig-proxy=false $(CONTAINER_NAME)
+
+up-db:
+	IMAGE_MYSQL=$(IMAGE_MYSQL) \
+	CONTAINER_NAME=$(PROJECT_NAME)_mysql \
+	DOCKER_NETWORK=$(DOCKER_NETWORK) \
+	docker-compose -f docker-compose.db.yml -p $(PROJECT_NAME)_mysql up -d
