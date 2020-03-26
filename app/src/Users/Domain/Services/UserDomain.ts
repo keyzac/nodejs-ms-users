@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify';
+import * as moment from 'moment'
 import { mean, std } from 'mathjs';
 import { TYPES } from '../../../Bootstrap/IoC/Types';
 import { UserRepository } from '../../Domain/Repository/UserRepository';
@@ -43,10 +44,23 @@ export class UserDomain {
 
     users = await this.userRepository.getUsers();
 
-    users.map((user: UserDto) => {
-      user['dataValues']['deathDate'] = '2070-04-15';
+    users.map(async (user: UserDto) => {
+      user['dataValues']['probablyDeathDate'] = await this.calculateDeathDate(user['dataValues']['birthDate']);
     });
 
     return users;
+  }
+
+  public async calculateDeathDate(birthDate: string): Promise<string> {
+    const mortalityAge: number = 75;
+    let deathDate: string;
+
+    // @ts-ignore
+    deathDate = moment(birthDate, 'YYYY-MM-DD');
+    // @ts-ignore
+    deathDate = deathDate.add('years', mortalityAge).format('YYYY-MM-DD');
+
+    // @ts-ignore
+    return deathDate;
   }
 }

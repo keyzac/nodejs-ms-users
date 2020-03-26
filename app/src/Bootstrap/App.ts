@@ -26,7 +26,7 @@ export class App {
     this.koa.use(logger());
     this.koa.use(
       koaSwagger({
-        title: 'NeoAuto Users Microservice',
+        title: 'Users Microservice',
         routePrefix: process.env.PREFIX + '/doc',
         swaggerOptions: {
           url: process.env.PREFIX + '/public/doc.json'
