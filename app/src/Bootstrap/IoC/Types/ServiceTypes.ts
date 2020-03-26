@@ -1,3 +1,4 @@
 export const ServiceTypes = {
-  AdvertiseService: Symbol.for('AdvertiseService')
+  AdvertiseService: Symbol.for('AdvertiseService'),
+  UserService: Symbol.for('UserService')
 };

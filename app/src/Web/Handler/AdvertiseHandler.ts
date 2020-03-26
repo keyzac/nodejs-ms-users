@@ -2,7 +2,7 @@ import { Put } from '../../Libs/Metadata/Routing/Put';
 import { AbstractHandler } from '../../Libs/Handler/AbstractHandler';
 import { inject } from 'inversify';
 import { TYPES } from '../../Bootstrap/IoC/Types';
-import { AdvertiseService } from '../../Advertisements/Application/AdvertiseService';
+import { AdvertiseService } from '../../Users/Application/AdvertiseService';
 
 export class AdvertiseHandler extends AbstractHandler {
   constructor(

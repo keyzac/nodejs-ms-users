@@ -6,7 +6,7 @@ import HttpStatusCode from '../../Libs/CommonResources/HttpStatusCode';
 import { injectable, inject } from 'inversify';
 import { Advertise } from '../Domain/Entities/Advertise';
 import { TYPES } from '../../Bootstrap/IoC/Types';
-import { ResultDto } from '../../Libs/Dto/ResultDto';
+import { BodyResultDto } from '../../Libs/Dto/BodyResultDto';
 import { AdvertiseRepository } from '../Domain/Repository/AdvertiseRepository';
 
 @injectable()
@@ -15,12 +15,13 @@ export class AdvertiseService {
     @inject(TYPES.Repositories.AdvertiseRepository) private advertiseRepository: AdvertiseRepository
   ) { }
 
-  public async updateAdvertise(advertiseData: AdvertiseInput, advertiseId: number): Promise<AdvertiseResponseDto> {
+  public async updateAdvertise(advertiseData: AdvertiseInput, advertiseId: number): Promise<any> {
     const id = advertiseId;
     const newAdvertiseData: AdvertiseInput = { ...advertiseData, id };
     const updateAdvertise: Advertise = await this.setUpdateAdvertise(new Advertise(), newAdvertiseData);
-    const response: ResultDto = await this.advertiseRepository.update(updateAdvertise);
-    return response;
+    // const response: BodyResultDto = await this.advertiseRepository.update(updateAdvertise);
+    // return response;
+    return true;
   }
 
   private async validateEntity(entity: any) {

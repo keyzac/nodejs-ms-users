@@ -4,6 +4,7 @@ import { ServiceTypes } from './Types/ServiceTypes';
 import { HandlerTypes } from './Types/HandlerTypes';
 import { ModelTypes } from './Types/ModelTypes';
 import { SearchEngineTypes } from './Types/SearchEngineTypes';
+import { ValidationTypes } from './Types/ValidationTypes';
 
 const TYPES = {
   Adapters: AdapterTypes,
@@ -11,6 +12,7 @@ const TYPES = {
   Services: ServiceTypes,
   Handlers: HandlerTypes,
   Models: ModelTypes,
+  Validation: ValidationTypes,
   SearchEngine: SearchEngineTypes,
   ResourceManager: Symbol.for('ResourceManager'),
   Sequelize: Symbol.for('Sequelize')
