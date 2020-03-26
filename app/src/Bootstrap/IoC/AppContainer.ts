@@ -5,6 +5,7 @@ import { Container } from 'inversify';
 import { HomeHandler } from '../../Web/Handler/HomeHandler';
 import { ValidationRequest } from '../../Users/Infrastructure/Validation/ValidationRequest';
 import { UserService } from '../../Users/Application/Services/UserService';
+import { UserDomain } from '../../Users/Domain/Services/UserDomain';
 import { UserModel } from '../../Users/Infrastructure/Persistence/Mapping/UserModel';
 import { UserRepository } from '../../Users/Domain/Repository/UserRepository';
 import { DbUserRepository } from '../../Users/Infrastructure/Repository/DbUserRepository';
@@ -41,11 +42,19 @@ container
   .inSingletonScope();
 
 /**
- * Services
+ * Application Services
  */
 container
   .bind<UserService>(TYPES.Services.UserService)
   .to(UserService)
+  .inSingletonScope();
+
+/**
+ * Domain Services
+ */
+container
+  .bind<UserDomain>(TYPES.Domain.UserDomain)
+  .to(UserDomain)
   .inSingletonScope();
 
 /**

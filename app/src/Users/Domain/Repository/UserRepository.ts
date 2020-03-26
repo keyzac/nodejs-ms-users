@@ -1,6 +1,6 @@
 import { User } from '../Entities/User';
-import {UserModel} from '../../Infrastructure/Persistence/Mapping/UserModel';
+import { UserBody } from '../../Application/Dto/Body/UserBody';
 
 export interface UserRepository {
-  createUser(userData: any): Promise<UserModel>;
+  createUser(userData: UserBody): Promise<User>;
 }

@@ -1,11 +1,12 @@
-import {BaseException} from '../../../Libs/Exception/BaseException';
+import { BaseException } from '../../../Libs/Exception/BaseException';
 import HttpStatusCode from '../../../Libs/CommonResources/HttpStatusCode';
-import {inject, injectable} from 'inversify';
-import {TYPES} from '../../../Bootstrap/IoC/Types';
-import {APP_STATUS_CODE} from '../Services/Util/AppStatusCode';
-import {UserRepository} from '../../Domain/Repository/UserRepository';
-import {UserModel} from '../Persistence/Mapping/UserModel';
-import {User} from '../../Domain/Entities/User';
+import { inject, injectable } from 'inversify';
+import { TYPES } from '../../../Bootstrap/IoC/Types';
+import { APP_STATUS_CODE } from '../Services/Util/AppStatusCode';
+import { UserRepository } from '../../Domain/Repository/UserRepository';
+import { UserModel } from '../Persistence/Mapping/UserModel';
+import { User } from '../../Domain/Entities/User';
+import { UserBody } from '../../Application/Dto/Body/UserBody';
 
 @injectable()
 export class DbUserRepository implements UserRepository {
@@ -18,7 +19,7 @@ export class DbUserRepository implements UserRepository {
     this.userModel = this.model.getModel();
   }
 
-  public async createUser(userData: User): Promise<UserModel> {
+  public async createUser(userData: UserBody): Promise<User> {
     try {
       return await this.userModel.create(userData);
     } catch (error) {
