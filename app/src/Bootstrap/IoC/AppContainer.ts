@@ -4,10 +4,6 @@ import { Sequelize } from 'sequelize';
 import { Container } from 'inversify';
 import { HomeHandler } from '../../Web/Handler/HomeHandler';
 import { ValidationRequest } from '../../Users/Infrastructure/Validation/ValidationRequest';
-import { AdvertiseService } from '../../Users/Application/AdvertiseService';
-import { AdvertiseModel } from '../../Users/Infrastructure/Persistence/Mapping/AdvertiseModel';
-import { AdvertiseRepository } from '../../Users/Domain/Repository/AdvertiseRepository';
-import { DbAdvertiseRepository } from '../../Users/Infrastructure/Repository/DbAdvertiseRepository';
 import { UserService } from '../../Users/Application/Services/UserService';
 import { UserModel } from '../../Users/Infrastructure/Persistence/Mapping/UserModel';
 import { UserRepository } from '../../Users/Domain/Repository/UserRepository';
@@ -47,7 +43,6 @@ container
 /**
  * Services
  */
-container.bind<AdvertiseService>(TYPES.Services.AdvertiseService).to(AdvertiseService).inSingletonScope();
 container
   .bind<UserService>(TYPES.Services.UserService)
   .to(UserService)
@@ -56,7 +51,6 @@ container
 /**
  * Repositories
  */
-container.bind<AdvertiseRepository>(TYPES.Repositories.AdvertiseRepository).to(DbAdvertiseRepository).inSingletonScope();
 container
   .bind<UserRepository>(TYPES.Repositories.UserRepository)
   .to(DbUserRepository)
@@ -65,7 +59,6 @@ container
 /**
  * Models
  */
-container.bind<AdvertiseModel>(TYPES.Models.AdvertiseModel).to(AdvertiseModel).inSingletonScope();
 container
   .bind<UserModel>(TYPES.Models.UserModel)
   .to(UserModel)

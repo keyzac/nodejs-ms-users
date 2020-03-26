@@ -21,7 +21,7 @@ export class UserModel extends BaseSequelizeModel {
       },
       {
         tableName: 'users',
-        timestamps: true
+        timestamps: false
       }
     );
     return this.model;

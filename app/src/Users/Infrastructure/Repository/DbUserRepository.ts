@@ -18,7 +18,7 @@ export class DbUserRepository implements UserRepository {
     this.userModel = this.model.getModel();
   }
 
-  public async createUser(userData: any): Promise<User> {
+  public async createUser(userData: User): Promise<UserModel> {
     try {
       return await this.userModel.create(userData);
     } catch (error) {
