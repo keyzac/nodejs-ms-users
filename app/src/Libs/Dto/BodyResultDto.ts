@@ -1,10 +1,3 @@
-export interface BodyResultDto {
-  status?: boolean;
-  message: string;
-  data: object;
-  code?: number;
-}
-
 export class ResultDto {
   constructor(
     private _data: any = {},

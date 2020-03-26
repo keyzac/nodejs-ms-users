@@ -11,7 +11,7 @@ export class UserService {
   constructor(
     @inject(TYPES.Validation.ValidationRequest)
     private validationRequest: ValidationRequest,
-    @inject(TYPES.Repositories.UserRepository)
+    @inject(TYPES.Domain.UserDomain)
     private userService: UserDomain
   ) {}
 
@@ -25,6 +25,18 @@ export class UserService {
 
     await this.validationRequest.validate(validateInput);
     const data = await this.userService.createUser(userData);
+
+    return new ResultDto(data);
+  }
+
+  public async getKpiUsers():Promise<ResultDto> {
+    const data = await this.userService.getKpiUsers();
+
+    return new ResultDto(data);
+  }
+
+  public async getUsers():Promise<ResultDto> {
+    const data = await this.userService.getUsers();
 
     return new ResultDto(data);
   }
