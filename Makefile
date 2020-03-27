@@ -27,7 +27,7 @@ build: ## build image to dev and cli: make build
 	docker build -f docker/dev/Dockerfile --build-arg UID=$(USER_ID) --build-arg GID=$(GROUP_ID) -t $(IMAGE_DEV) docker/dev/
 
 build-db: ## build image to dev and cli: make build
-	docker build -f docker/mysql/Dockerfile --build-arg UID=$(USER_ID) --build-arg GID=$(GROUP_ID) -t $(IMAGE_DEV) docker/mysql/
+	docker build -f docker/mysql/Dockerfile -t ${IMAGE_MYSQL} docker/mysql/
 
 yarn-install-local: ## yarn install on local: make yarn-install-local
 	docker run --rm -u node -t -v $(PWD)/app:/home/node/app/ --entrypoint="yarn" $(IMAGE_DEV) install
