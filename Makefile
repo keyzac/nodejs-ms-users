@@ -32,6 +32,11 @@ build-db: ## build image to dev and cli: make build
 yarn-install-local: ## yarn install on local: make yarn-install-local
 	docker run --rm -u node -t -v $(PWD)/app:/home/node/app/ --entrypoint="yarn" $(IMAGE_DEV) install
 
+prepare-db:
+	docker exec -it ${CONTAINER_NAME} npx sequelize-cli db:create
+	docker exec -it ${CONTAINER_NAME} npx sequelize-cli db:migrate
+	docker exec -it ${CONTAINER_NAME} npx sequelize-cli db:seed:all
+
 up: ## up docker containers: make up
 	@make verify_network &> /dev/null
 	@IMAGE_DEV=$(IMAGE_DEV) \
