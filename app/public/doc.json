@@ -8,7 +8,7 @@
     }
   },
   "host": "localhost",
-  "basePath": "/v1/users",
+  "basePath": "/v1/users/",
   "schemes": [
     "http"
   ],

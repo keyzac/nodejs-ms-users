@@ -10,6 +10,8 @@ import { UserDto } from '../../Application/Dto/Response/UserDto';
 
 @injectable()
 export class UserDomain {
+  MORTALITY_AGE: number = 75;
+
   constructor(
     @inject(TYPES.Repositories.UserRepository)
     private userRepository: UserRepository
@@ -26,9 +28,7 @@ export class UserDomain {
 
     users = await this.userRepository.getUsers();
 
-    let usersAge = users.map((user: UserDto) => {
-      return user.age;
-    });
+    let usersAge = users.map((user: UserDto) => user.age);
 
     standardDeviation = std(usersAge);
     average = mean(usersAge);
@@ -45,22 +45,19 @@ export class UserDomain {
     users = await this.userRepository.getUsers();
 
     users.map(async (user: UserDto) => {
-      user['dataValues']['probablyDeathDate'] = await this.calculateDeathDate(user['dataValues']['birthDate']);
+      user['dataValues']['probablyDeathDate'] = await this.calculateDeathDate(user.birthDate);
     });
 
     return users;
   }
 
-  public async calculateDeathDate(birthDate: string): Promise<string> {
-    const mortalityAge: number = 75;
-    let deathDate: string;
+  public calculateDeathDate(birthDate: string): string {
+    let deathDate: moment.Moment;
+    let probablyDeathDate: string;
 
-    // @ts-ignore
     deathDate = moment(birthDate, 'YYYY-MM-DD');
-    // @ts-ignore
-    deathDate = deathDate.add('years', mortalityAge).format('YYYY-MM-DD');
+    probablyDeathDate = deathDate.add(this.MORTALITY_AGE, 'years').format('YYYY-MM-DD');
 
-    // @ts-ignore
-    return deathDate;
+    return probablyDeathDate;
   }
 }
