@@ -39,16 +39,20 @@
               ],
               "properties": {
                 "firstName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Martin"
                 },
                 "lastName": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Vizcarra"
                 },
                 "age": {
-                  "type": "integer"
+                  "type": "integer",
+                  "example": 57
                 },
                 "birthDate": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "1963-03-22"
                 }
               }
             }
@@ -56,15 +60,17 @@
         ],
         "responses": {
           "200": {
-            "description": "Creación exitosa",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
                 "code": {
-                  "type": "integer"
+                  "type": "integer",
+                  "example": 1000
                 },
                 "message": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Petición exitosa."
                 },
                 "data": {
                   "type": "object"
@@ -73,15 +79,103 @@
             }
           },
           "400": {
-            "description": "Parametro invalido",
+            "description": "Error",
             "schema": {
               "type": "object",
               "properties": {
                 "code": {
-                  "type": "integer"
+                  "type": "integer",
+                  "example": 5000
                 },
                 "message": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Error general de aplicación."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/kpideclientes": {
+      "get": {
+        "tags": ["Kpi"],
+        "summary": "Muestra promedio y desviación estandar de las edades de todos los clientes",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 1000
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Petición exitosa."
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 5000
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Error general de aplicación."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listclientes": {
+      "get": {
+        "tags": ["Listar"],
+        "summary": "Lista todos los clientes y su fecha probable de muerte",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 1000
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Petición exitosa."
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 5000
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Error general de aplicación."
                 }
               }
             }

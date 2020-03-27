@@ -27,12 +27,12 @@ Base de datos
 ```
 
 #### Documentación Swagger
-- [Doc Swagger](http://34.68.140.251/v1/users/doc)
+- [Doc Swagger](http://35.188.38.207/v1/users/doc)
 
 #### Recursos del servicio
 ###### Post
-- http://34.68.140.251/v1/users/creacliente
+- http://35.188.38.207/v1/users/creacliente
 
 ###### Get
-- http://34.68.140.251/v1/users/kpideclientes
-- http://34.68.140.251/v1/users/listclientes
+- http://35.188.38.207/v1/users/kpideclientes
+- http://35.188.38.207/v1/users/listclientes
