@@ -4244,7 +4244,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mathjs@^6.6.1:
+mathjs@6.6.1:
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.6.1.tgz#46675c9e97b8cb8cf9a66402b1360a6996abf103"
   integrity sha512-RCFCYkf1IV3u0DAeqj2Rqqwyi302kFxHoYbfp/Bxm6kUg0ALYH7YT0bYzsO8qgCLv9RS3bWMZnAgUbLgiDjLcw==
@@ -5495,7 +5495,7 @@ seq-queue@^0.0.5:
   resolved "https://registry.yarnpkg.com/seq-queue/-/seq-queue-0.0.5.tgz#d56812e1c017a6e4e7c3e3a37a1da6d78dd3c93e"
   integrity sha1-1WgS4cAXpuTnw+Ojeh2m143TyT4=
 
-sequelize-cli@^5.5.1:
+sequelize-cli@5.5.1:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/sequelize-cli/-/sequelize-cli-5.5.1.tgz#0b9c2fc04d082cc8ae0a8fe270b96bb606152bab"
   integrity sha512-ZM4kUZvY3y14y+Rq3cYxGH7YDJz11jWHcN2p2x7rhAIemouu4CEXr5ebw30lzTBtyXV4j2kTO+nUjZOqzG7k+Q==
