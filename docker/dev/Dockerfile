@@ -30,7 +30,7 @@ ONBUILD ADD app /home/node/app
 
 WORKDIR /home/node/app
 
-EXPOSE 3636
+EXPOSE 80
 COPY ./entrypoint.sh /tmp
 RUN chmod +x /tmp/entrypoint.sh
 ENTRYPOINT /tmp/entrypoint.sh

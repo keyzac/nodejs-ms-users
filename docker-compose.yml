@@ -11,7 +11,7 @@ services:
       - ~/.ssh:/root/.ssh
       - ~/.aws:/root/.aws
     ports:
-    - 3636:3636
+    - 80:80
 
 networks:
   default:
